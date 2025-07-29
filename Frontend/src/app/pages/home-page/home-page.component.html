@@ -1,6 +1,4 @@
-<div
-  class="min-vh-100 bg-light d-flex align-items-center justify-content-center p-4"
->
+<div class="min-vh-100 bg-light d-flex align-items-center justify-content-center p-4">
   <div class="container-xl bg-white rounded shadow overflow-hidden">
     <div class="row" style="min-height: 600px">
       <!-- Left side - Image -->
@@ -13,13 +11,11 @@
       </div>
 
       <!-- Right side - Content -->
-      <div
-        class="col-md-6 d-flex flex-column justify-content-center px-4 px-md-5 py-5"
-      >
-        <div>
-          <div class="mb-4">
-            <h1 class="display-2 fw-light text-dark mb-3">Sari Purdue</h1>
-            <p class="fs-3 text-muted fw-light">Software Engineer</p>
+      <div class="col-md-6 d-flex flex-column justify-content-center px-4 px-md-5 py-5">
+        <div *ngIf="data.length>0">
+          <div class="mb-4" *ngFor="let item of data">
+            <h1 class="display-2 fw-light text-dark mb-3">{{item.name}}</h1>
+            <p class="fs-3 text-muted fw-light">{{item.designation}}</p>
           </div>
 
           <div class="pt-3">
