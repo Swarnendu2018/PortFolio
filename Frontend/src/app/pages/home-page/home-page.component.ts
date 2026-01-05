@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit{
 
   downloadCV() {
     const link = document.createElement('a');
-    link.href = 'http://localhost:3000/download-cv'; // or your API endpoint
+    link.href = 'https://portfolio-3hde.onrender.com/download-cv'; // or your API endpoint
     link.download = 'Swarnendu_Gharami_MEAN_Stack.pdf';
     link.click();
   }
