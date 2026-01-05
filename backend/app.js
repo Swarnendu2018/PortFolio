@@ -8,7 +8,7 @@ const app = express();
 
 require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/Portfolio').then(()=>{
+mongoose.connect(process.env.MONGO_Cluster_URI).then(()=>{
     console.log('Mongodb Connected');
 }).catch(err=>{
     console.log("Getting error to connect mongodb:",err);
