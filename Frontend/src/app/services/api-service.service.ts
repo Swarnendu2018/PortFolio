@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiServiceService {
 
-  url = 'http://localhost:3000/api/profile';
+  url = 'https://portfolio-3hde.onrender.com/api/profile';
 
   constructor(private http:HttpClient) { }
 
