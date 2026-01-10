@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit{
+export class HomePageComponent implements OnInit, OnDestroy {
 
   @ViewChild('contactSection') contactSection!: ElementRef;
 
@@ -28,5 +28,9 @@ export class HomePageComponent implements OnInit{
 
   scrollToContact(){
     this.contactSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  ngOnDestroy() {
+    this.data.unsubscribe(); // must clean up manually
   }
 }
