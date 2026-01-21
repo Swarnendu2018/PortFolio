@@ -1,3 +1,11 @@
+.container-section{
+    background-color: #ffffff;
+}
+
+.header-section{
+    background-color: #f8f9fa;
+}
+
 .custom-padding{
     padding: 0 !important;
 }

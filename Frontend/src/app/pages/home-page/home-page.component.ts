@@ -31,6 +31,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.data.unsubscribe(); // must clean up manually
+    this.data.unsubscribe();
   }
 }

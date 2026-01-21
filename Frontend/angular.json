@@ -20,15 +20,10 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/assets","src/_redirects"],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "src/styles.css",
-              "node_modules/aos/dist/aos.css"
+              "src/style/custom-bootstrap.scss",
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/aos/dist/aos.js"
-            ],
+            "scripts": [],
             "allowedCommonJsDependencies": [
               "aos"
             ]
