@@ -1,0 +1,31 @@
+/* 1. Functions (required) */
+@import "bootstrap/scss/functions";
+
+/* 2. Variables (optional override here) */
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+/* 3. Maps & Mixins */
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+/* 4. Core reset */
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+
+/* 5. Layout */
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+
+/* 6. Components you use */
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/_card";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/progress";
+
+/* 7. Helpers */
+@import "bootstrap/scss/helpers";
+
+/* 8. Utilities API (VERY IMPORTANT – enables spacing, flex, colors etc.) */
+@import "bootstrap/scss/utilities/api";
