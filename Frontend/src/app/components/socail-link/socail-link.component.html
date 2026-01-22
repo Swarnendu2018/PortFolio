@@ -1,0 +1,9 @@
+<div class="d-flex gap-3">
+  <a *ngFor="let link of socialLinks"
+     [href]="link.url"
+     class="text-white"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="bi fs-3" [ngClass]="[link.icon, link.colorClass]"></i>
+  </a>
+</div>
