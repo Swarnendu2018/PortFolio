@@ -27,5 +27,7 @@
 /* 7. Helpers */
 @import "bootstrap/scss/helpers";
 
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
 /* 8. Utilities API (VERY IMPORTANT – enables spacing, flex, colors etc.) */
 @import "bootstrap/scss/utilities/api";

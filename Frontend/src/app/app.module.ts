@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SocailLinkComponent } from './components/socail-link/socail-link.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SocailLinkComponent
   ],
   imports: [
     BrowserModule,
