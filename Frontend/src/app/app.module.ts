@@ -8,17 +8,22 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HttpClientModule } from '@angular/common/http';
 import { SocailLinkComponent } from './components/socail-link/socail-link.component';
 
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ScelitonComponent } from './components/sceliton/sceliton.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     PageNotFoundComponent,
-    SocailLinkComponent
+    SocailLinkComponent,
+    ScelitonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

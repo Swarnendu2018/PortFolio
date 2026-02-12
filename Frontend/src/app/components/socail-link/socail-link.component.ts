@@ -10,7 +10,7 @@ export class SocailLinkComponent {
     {
       url: 'https://github.com/Swarnendu2018',
       icon: 'bi-github',
-      colorClass: 'text-light'
+      colorClass: 'text-dark'
     },
     {
       url: 'https://www.linkedin.com/in/swarnendu-gharami-547554139/',
@@ -20,7 +20,7 @@ export class SocailLinkComponent {
     {
       url: 'https://mail.google.com/mail/?view=cm&to=swarnenduriku2014@gmail.com',
       icon: 'bi-google',
-      colorClass: ''
+      colorClass: 'text-dark'
     }
   ];
 }

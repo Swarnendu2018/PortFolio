@@ -11,11 +11,24 @@ export class HomePageComponent implements OnInit, OnDestroy {
   @ViewChild('contactSection') contactSection!: ElementRef;
 
   data:any = [];
+  isLoading = true;
   constructor(private dataService:ApiServiceService){}
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe((res:any) => {
-      this.data = res;
+    this.loadData();
+  }
+
+  loadData() {
+    this.isLoading = true;
+
+    this.dataService.getData().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+      }
     })
   }
 
