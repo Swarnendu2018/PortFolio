@@ -1,279 +1,288 @@
-<div class="min-vh-100 container-section" *ngFor="let item of data">
-  <!-- {/* Header Section */} -->
-  <section class="py-5 header-section">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <div class="mb-4">
-            <h1 class="display-2 fw-bold text-dark mb-3">
-              {{item.name}}
-            </h1>
-            <p class="fs-4 text-muted fw-medium">
-              {{item.designation}}
+<div class="min-vh-100 container-section">
+  <section class="py-5 header-section" *ngIf="isLoading">
+    <app-sceliton></app-sceliton>
+  </section>
+  <div *ngFor="let item of data">
+    <!-- {/* Header Section */} -->
+    <section class="py-5 header-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="mb-4">
+              <h1 class="display-2 fw-bold text-dark mb-3">
+                {{item.name}}
+              </h1>
+              <p class="fs-4 text-muted fw-medium">
+                {{item.designation}}
+              </p>
+            </div>
+
+            <p class="fs-5 text-dark mb-4" style="line-height: 1.6;">
+              Passionate software engineer with expertise in full-stack development,
+              creating scalable applications and innovative solutions.
             </p>
+
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <button class="btn btn-dark btn-lg" (click)="downloadCV()">
+                <!-- <Download class="me-2" /> -->
+                Download CV
+              </button>
+              <button class="btn btn-outline-dark btn-lg" (click)="scrollToContact()">
+                Contact Me
+              </button>
+            </div>
+            <app-socail-link></app-socail-link>
           </div>
 
-          <p class="fs-5 text-dark mb-4" style="line-height: 1.6;">
-            Passionate software engineer with expertise in full-stack development,
-            creating scalable applications and innovative solutions.
-          </p>
-
-          <div class="d-flex flex-wrap gap-3 mb-4">
-            <button class="btn btn-dark btn-lg" (click)="downloadCV()">
-              <!-- <Download class="me-2" /> -->
-              Download CV
-            </button>
-            <button class="btn btn-outline-dark btn-lg" (click)="scrollToContact()">
-              Contact Me
-            </button>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="rounded-3 overflow-hidden" style="background-color: #e9ecef;">
-            <img src="./../../../assets/profile/dp(updated).png"
-              alt="Swarnendu - Software Engineer" class="w-100 h-100 object-fit-cover" />
+          <div class="col-lg-6">
+            <div class="rounded-3 overflow-hidden" style="background-color: #e9ecef;">
+              <img src="./../../../assets/profile/dp(updated).png" alt="Swarnendu - Software Engineer"
+                class="w-100 h-100 object-fit-cover" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- {/* About Section */} -->
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <h2 class="display-4 fw-bold text-dark mb-4">About Me</h2>
-          <div class="text-muted" style="line-height: 1.7;">
-            <p class="mb-4">
-              I'm a digital senior software engineer with years of
-              experience in innovative applications. I'm eager to bring my
-              expertise to a dynamic team where I can contribute to creative
-              solutions.
-            </p>
-            <p>
-              My skills have developed substantially through varied
-              experiences, and I have consistently demonstrated ability to
-              learn, adapt, and grow professionally.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="rounded-3 overflow-hidden" style="background-color: #f8f9fa;">
-            <img src="./../../../assets/profile/dp.jpg"
-              alt="Working at desk" class="w-100 h-100 object-fit-cover"/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- {/* Experience & Education Section */} -->
-  <section class="py-5" style="background-color: #f8f9fa;">
-    <div class="container">
-      <h2 class="display-4 fw-bold text-dark mb-5 text-center">
-        Experience & Education
-      </h2>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <!-- {/* Experience Item */} -->
-          <div class="card border-0 shadow-sm mb-4" style="background-color: #ffffff;" *ngFor="let exp of item.experiences">
-            <div class="card-body p-4">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <div>
-                  <h3 class="h5 fw-bold text-dark mb-1">
-                    {{exp.role}}
-                  </h3>
-                  <p class="text-muted fw-medium mb-0">{{exp.companyName}}</p>
-                </div>
-                <span class="badge bg-light text-dark border">{{exp.YOJ}}-{{exp.YOE}}</span>
-              </div>
-              <p class="text-muted mb-0" style="line-height: 1.6;">
-                {{exp.description}}
+    <!-- {/* About Section */} -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="display-4 fw-bold text-dark mb-4">About Me</h2>
+            <div class="text-muted" style="line-height: 1.7;">
+              <p class="mb-4">
+                I'm a digital senior software engineer with years of
+                experience in innovative applications. I'm eager to bring my
+                expertise to a dynamic team where I can contribute to creative
+                solutions.
+              </p>
+              <p>
+                My skills have developed substantially through varied
+                experiences, and I have consistently demonstrated ability to
+                learn, adapt, and grow professionally.
               </p>
             </div>
           </div>
 
-          <!-- {/* Education Item */} -->
-          <div class="card border-0 shadow-sm mb-4" style="background-color: #ffffff;" *ngFor="let edu of item?.education">
-            <div class="card-body p-4">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <div  *ngIf="edu.degree === 'M.Tech'">
-                  <h3 class="h5 fw-bold text-dark mb-1">
-                    MASTER OF TECHNOLOGY IN {{edu.stream}} ENGINEERING
-                  </h3>
-                  <p class="text-muted fw-medium mb-0">{{edu.university}}</p>
-                </div>
-
-                <div  *ngIf="edu.degree === 'B.Tech'">
-                  <h3 class="h5 fw-bold text-dark mb-1">
-                    BACHELOR OF TECHNOLOGY IN {{edu.stream}} ENGINEERING
-                  </h3>
-                  <p class="text-muted fw-medium mb-0">{{edu.university}}</p>
-                </div>
-                <span class="badge bg-light text-dark border">{{edu.YOP}}</span>
-              </div>
-              <p class="text-muted mb-0" style="line-height: 1.6;">
-                Graduated from {{edu.university}}
-              </p>
+          <div class="col-lg-6">
+            <div class="rounded-3 overflow-hidden" style="background-color: #f8f9fa;">
+              <img src="./../../../assets/profile/dp.jpg" alt="Working at desk" class="w-100 h-100 object-fit-cover" />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- {/* Skills Section */} -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="display-4 fw-bold text-dark mb-5 text-center">
-        Skills & Proficiencies
-      </h2>
+    <!-- {/* Experience & Education Section */} -->
+    <section class="py-5" style="background-color: #f8f9fa;">
+      <div class="container">
+        <h2 class="display-4 fw-bold text-dark mb-5 text-center">
+          Experience & Education
+        </h2>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="row g-5">
-            <!-- {/* Technical Skills */} -->
-            <div class="col-md-6">
-              <h3 class="h5 fw-bold text-dark mb-4">TECHNICAL SKILLS</h3>
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">Angular, HTML, CSS, javaScript, MongoDb</span>
-                  <span class="text-muted small">95%</span>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <!-- {/* Experience Item */} -->
+            <div class="card border-0 shadow-sm mb-4" style="background-color: #ffffff;"
+              *ngFor="let exp of item.experiences">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <div>
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      {{exp.role}}
+                    </h3>
+                    <p class="text-muted fw-medium mb-0">{{exp.companyName}}</p>
+                  </div>
+                  <span class="badge bg-light text-dark border">{{exp.YOJ}}-{{exp.YOE}}</span>
                 </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 95%"></div>
-                </div>
-              </div>
-
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">Database and Web Development</span>
-                  <span class="text-muted small">90%</span>
-                </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 90%"></div>
-                </div>
-              </div>
-
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">NodeJs, AWS, Azure</span>
-                  <span class="text-muted small">85%</span>
-                </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 85%"></div>
-                </div>
+                <p class="text-muted mb-0" style="line-height: 1.6;">
+                  {{exp.description}}
+                </p>
               </div>
             </div>
 
-            <!-- {/* Languages */} -->
-            <div class="col-md-6">
-              <h3 class="h5 fw-bold text-dark mb-4">LANGUAGES</h3>
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">Bengali (Native Speaker)</span>
-                  <span class="text-muted small">100%</span>
+            <!-- {/* Education Item */} -->
+            <div class="card border-0 shadow-sm mb-4" style="background-color: #ffffff;"
+              *ngFor="let edu of item?.education">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <div *ngIf="edu.degree === 'M.Tech'">
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      MASTER OF TECHNOLOGY IN {{edu.stream}} ENGINEERING
+                    </h3>
+                    <p class="text-muted fw-medium mb-0">{{edu.university}}</p>
+                  </div>
+
+                  <div *ngIf="edu.degree === 'B.Tech'">
+                    <h3 class="h5 fw-bold text-dark mb-1">
+                      BACHELOR OF TECHNOLOGY IN {{edu.stream}} ENGINEERING
+                    </h3>
+                    <p class="text-muted fw-medium mb-0">{{edu.university}}</p>
+                  </div>
+                  <span class="badge bg-light text-dark border">{{edu.YOP}}</span>
                 </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 100%"></div>
+                <p class="text-muted mb-0" style="line-height: 1.6;">
+                  Graduated from {{edu.university}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- {/* Skills Section */} -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="display-4 fw-bold text-dark mb-5 text-center">
+          Skills & Proficiencies
+        </h2>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="row g-5">
+              <!-- {/* Technical Skills */} -->
+              <div class="col-md-6">
+                <h3 class="h5 fw-bold text-dark mb-4">TECHNICAL SKILLS</h3>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">Angular, HTML, CSS, javaScript, MongoDb</span>
+                    <span class="text-muted small">95%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 95%"></div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">Database and Web Development</span>
+                    <span class="text-muted small">90%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 90%"></div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">NodeJs, AWS, Azure</span>
+                    <span class="text-muted small">85%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 85%"></div>
+                  </div>
                 </div>
               </div>
 
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">English</span>
-                  <span class="text-muted small">100%</span>
+              <!-- {/* Languages */} -->
+              <div class="col-md-6">
+                <h3 class="h5 fw-bold text-dark mb-4">LANGUAGES</h3>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">Bengali (Native Speaker)</span>
+                    <span class="text-muted small">100%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 100%"></div>
+                  </div>
                 </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 100%"></div>
-                </div>
-              </div>
 
-              <div class="mb-4">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-dark fw-medium">Hindi</span>
-                  <span class="text-muted small">100%</span>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">English</span>
+                    <span class="text-muted small">100%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 100%"></div>
+                  </div>
                 </div>
-                <div class="progress" style="height: '8px'">
-                  <div class="progress-bar bg-dark" style="width: 100%"></div>
+
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-dark fw-medium">Hindi</span>
+                    <span class="text-muted small">100%</span>
+                  </div>
+                  <div class="progress" style="height: '8px'">
+                    <div class="progress-bar bg-dark" style="width: 100%"></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- {/* Sample Work Section */} -->
-  <section class="py-5" style="background-color: #212529; color:#ffffff">
-    <div class="container">
-      <h2 class="display-4 fw-bold mb-5 text-center text-white">Sample Work</h2>
+    <!-- {/* Sample Work Section */} -->
+    <section class="py-5" style="background-color: #212529; color:#ffffff">
+      <div class="container">
+        <h2 class="display-4 fw-bold mb-5 text-center text-white">Sample Work</h2>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card bg-dark border-secondary">
-            <div class="ratio ratio-16x9">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
-                alt="Scalable Streaming Platform" class="card-img-top object-fit-cover" />
-            </div>
-            <div class="card-body">
-              <h3 class="h5 fw-bold text-white mb-3">
-                Scalable Streaming Platform
-              </h3>
-              <p class="text-light small mb-0" style="line-height: 1.6;">
-                Designed and developed a full-featured video streaming web application using Angular, Node.js, Express, and MongoDB. Implemented secure user authentication and session management using JWT, enabling safe sign-up, login, and profile handling.
-              </p>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card bg-dark border-secondary">
+              <div class="ratio ratio-16x9">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+                  alt="Scalable Streaming Platform" class="card-img-top object-fit-cover" />
+              </div>
+              <div class="card-body">
+                <h3 class="h5 fw-bold text-white mb-3">
+                  Scalable Streaming Platform
+                </h3>
+                <p class="text-light small mb-0" style="line-height: 1.6;">
+                  Designed and developed a full-featured video streaming web application using Angular, Node.js,
+                  Express, and MongoDB. Implemented secure user authentication and session management using JWT,
+                  enabling safe sign-up, login, and profile handling.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card bg-dark border-secondary">
-            <div class="ratio ratio-16x9">
-              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop"
-                alt="Banking App for iOS" class="card-img-top object-fit-cover" />
-            </div>
-            <div class="card-body">
-              <h3 class="h5 fw-bold text-white mb-3">
-                E-Commerce Web Application with Secure Payment Gateway
-              </h3>
-              <p class="text-light small mb-0" style="line-height: 1.6;">
-                Contributed to the development of a responsive e-commerce platform using Angular and Node.js with RESTful APIs for product management, orders, and customer data handling.
-              </p>
+          <div class="col-md-4">
+            <div class="card bg-dark border-secondary">
+              <div class="ratio ratio-16x9">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop"
+                  alt="Banking App for iOS" class="card-img-top object-fit-cover" />
+              </div>
+              <div class="card-body">
+                <h3 class="h5 fw-bold text-white mb-3">
+                  E-Commerce Web Application with Secure Payment Gateway
+                </h3>
+                <p class="text-light small mb-0" style="line-height: 1.6;">
+                  Contributed to the development of a responsive e-commerce platform using Angular and Node.js with
+                  RESTful APIs for product management, orders, and customer data handling.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card bg-dark border-secondary">
-            <div class="ratio ratio-16x9">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-                alt="Senior Software Engineers" class="card-img-top object-fit-cover" />
-            </div>
-            <div class="card-body">
-              <h3 class="h5 fw-bold text-white mb-3">
-                Senior Software Engineers
-              </h3>
-              <p class="text-light small mb-0" style="line-height: 1.6;">
-                I established a mentoring
-                program and led other software
-                developers in best practices
-                and methodologies.
-              </p>
+          <div class="col-md-4">
+            <div class="card bg-dark border-secondary">
+              <div class="ratio ratio-16x9">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+                  alt="Senior Software Engineers" class="card-img-top object-fit-cover" />
+              </div>
+              <div class="card-body">
+                <h3 class="h5 fw-bold text-white mb-3">
+                  Senior Software Engineers
+                </h3>
+                <p class="text-light small mb-0" style="line-height: 1.6;">
+                  I established a mentoring
+                  program and led other software
+                  developers in best practices
+                  and methodologies.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- {/* Testimonials Section */} -->
-  <!-- <section class="py-5" style="background-color: #f8f9fa;">
+    <!-- {/* Testimonials Section */} -->
+    <!-- <section class="py-5" style="background-color: #f8f9fa;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -307,31 +316,32 @@
     </div>
   </section> -->
 
-  <!-- {/* Contact Section */} -->
-  <section class="py-5" style="background-color: #212529;" #contactSection>
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <div class="rounded-3 overflow-hidden">
-            <img src="assets/profile/dp.jpg"
-              alt="Sari Purdue Contact" class="w-100 h-100 object-fit-cover" />
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <h2 class="display-4 fw-bold text-white mb-4">Reach out</h2>
-
-          <div class="mb-4">
-            <p class="text-light mb-2">Swarnendu Gharami</p>
-            <p class="text-light mb-2">Phone-number: {{item.phone}}</p>
-            <p class="text-light">Email: {{item.email}}</p>
+    <!-- {/* Contact Section */} -->
+    <section class="py-5" style="background-color: #f8f9fa;" #contactSection>
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="rounded-3 overflow-hidden">
+              <img src="assets/profile/dp.jpg" alt="Sari Purdue Contact" class="w-100 h-100 object-fit-cover" />
+            </div>
           </div>
 
-          <hr class="border-secondary my-4" />
+          <div class="col-lg-6">
+            <h2 class="display-4 fw-bold text-dark mb-4">Reach out</h2>
 
-          <app-socail-link></app-socail-link>
+            <div class="mb-4">
+              <p class="text-dark mb-2">Swarnendu Gharami</p>
+              <p class="text-dark mb-2">Phone-number: {{item.phone}}</p>
+              <p class="text-dark">Email: {{item.email}}</p>
+            </div>
+
+            <hr class="border-secondary my-4" />
+
+            <app-socail-link></app-socail-link>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
 </div>
