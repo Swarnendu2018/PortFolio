@@ -10,7 +10,7 @@ router.get('/profile',async (req,res) => {
         const user = await Profile.find();
         res.json(user);
     } catch (error) {
-        res.json({message:'Internal Server Error',error:err})
+        res.json({message:'Internal Server Error',error})
     }
     
 });
