@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiServiceService {
 
-  url = 'https://portfolio-3hde.onrender.com/api/profile';
+  url = 'https://swarnenduportfoliobackend123.vercel.app/api/profile';
 
   constructor(private http:HttpClient) { }
 

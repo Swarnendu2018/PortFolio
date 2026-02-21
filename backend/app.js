@@ -1,12 +1,28 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const rateLimit = require('express-rate-limit');
 const cors = require('cors');
-
+require('dotenv').config();
 const path = require('path');
 
 const app = express();
 
-require('dotenv').config();
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    limit: 100,               // max requests per IP
+    standardHeaders: 'draft-8', // send rate limit info in headers
+    legacyHeaders: false,
+    handler: (req, res, next, options) => {
+        res.status(options.statusCode).json({
+            success: false,
+            error: "Too many requests, please slow down.",
+        });
+    }
+});
+
+app.use(limiter);
+
+
 
 mongoose.connect(process.env.MONGO_Cluster_URI).then(()=>{
     console.log('Mongodb Connected');
