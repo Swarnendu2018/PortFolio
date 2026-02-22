@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  url = 'https://swarnenduportfoliobackend123.vercel.app/api/profile';
+  url = `${environment.apiUrl}/api/profile`;
 
   constructor(private http:HttpClient) { }
 

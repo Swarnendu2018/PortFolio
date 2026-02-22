@@ -22,8 +22,6 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-
-
 mongoose.connect(process.env.MONGO_Cluster_URI).then(()=>{
     console.log('Mongodb Connected');
 }).catch(err=>{
