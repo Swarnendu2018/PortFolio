@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home-page',
@@ -34,7 +35,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   downloadCV() {
     const link = document.createElement('a');
-    link.href = 'https://portfolio-3hde.onrender.com/download-cv'; // or your API endpoint
+    link.href = `${environment.apiUrl}/download-cv`; // or your API endpoint
     link.download = 'Swarnendu_Gharami_MEAN_Stack.pdf';
     link.click();
   }
