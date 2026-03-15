@@ -4,8 +4,11 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
+const client = require("prom-client");
 
 const app = express();
+
+client.collectDefaultMetrics();
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -42,6 +45,10 @@ app.get('/download-cv', (req, res) => {
   });
 });
 
+app.get("/metrics", async (req, res) => {
+  res.set("Content-Type", client.register.contentType);
+  res.end(await client.register.metrics());
+});
 
 app.get('/',(req,res)=>{
     res.send('app running......');

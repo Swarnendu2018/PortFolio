@@ -17,5 +17,8 @@
     "express-rate-limit": "^8.2.1",
     "mongoose": "^8.16.5",
     "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "prom-client": "^15.1.3"
   }
 }
