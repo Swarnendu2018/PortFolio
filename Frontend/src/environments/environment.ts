@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://swarnenduportfoliobackend123.vercel.app'
+  production: false,
+  apiUrl: 'http://localhost:3000'
 };
