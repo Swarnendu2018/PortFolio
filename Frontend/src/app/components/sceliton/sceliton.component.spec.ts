@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { ScelitonComponent } from './sceliton.component';
 
@@ -8,7 +9,8 @@ describe('ScelitonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ScelitonComponent]
+      declarations: [ScelitonComponent],
+      imports: [NgxSkeletonLoaderModule]
     });
     fixture = TestBed.createComponent(ScelitonComponent);
     component = fixture.componentInstance;

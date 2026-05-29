@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { environment } from 'src/environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -13,6 +14,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   data:any = [];
   isLoading = true;
+  private dataSubscription?: Subscription;
+
   constructor(private dataService:ApiServiceService){}
 
   ngOnInit(): void {
@@ -22,7 +25,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   loadData() {
     this.isLoading = true;
 
-    this.dataService.getData().subscribe({
+    this.dataSubscription = this.dataService.getData().subscribe({
       next: (res) => {
         this.data = res;
         this.isLoading = false;
@@ -45,6 +48,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.data.unsubscribe();
+    this.dataSubscription?.unsubscribe();
   }
 }
