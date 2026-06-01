@@ -88,27 +88,27 @@ function startServer() {
     });
 }
 
-// function startCluster() {
-//     console.log(`Master ${process.pid} is running`);
+function startCluster() {
+    console.log(`Master ${process.pid} is running`);
 
-//     for (let i = 0; i < numCpus; i++) {
-//         cluster.fork();
-//     }
+    for (let i = 0; i < numCpus; i++) {
+        cluster.fork();
+    }
 
-//     cluster.on('exit', (worker) => {
-//         console.log(`Worker ${worker.process.pid} died. Restarting....`);
-//         cluster.fork();
-//     });
-// }
+    cluster.on('exit', (worker) => {
+        console.log(`Worker ${worker.process.pid} died. Restarting....`);
+        cluster.fork();
+    });
+}
 
-// if (require.main === module) {
-//     if (cluster.isMaster) {
-//         startCluster();
-//     } else {
-//         startServer();
-//     }
-// }
+if (require.main === module) {
+    if (cluster.isMaster) {
+        startCluster();
+    } else {
+        startServer();
+    }
+}
 
-startServer();
+// startServer();
 
 module.exports = { createApp, connectDatabase, startServer };
