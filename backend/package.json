@@ -4,13 +4,16 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -19,6 +22,7 @@
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
+    "eslint": "^10.4.1",
     "prom-client": "^15.1.3"
   }
 }
