@@ -4,6 +4,7 @@ const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
+const fs = require('fs');
 const client = require("prom-client");
 
 const cluster = require('cluster');
@@ -12,8 +13,10 @@ const os = require('os');
 const numCpus = os.cpus().length;
 let defaultMetricsStarted = false;
 
-function createApp() {
+function createApp(options = {}) {
     const app = express();
+    const cvFileName = 'Swarnendu_Gharami_MEAN_Stack.pdf';
+    const cvFilePath = options.cvFilePath || path.join(__dirname, 'files', cvFileName);
 
     app.use(cors());
 
@@ -40,8 +43,12 @@ function createApp() {
 
     // API to trigger download
     app.get('/download-cv', (req, res) => {
-        const filePath = path.join(__dirname, 'files', 'Swarnendu_Gharami_MEAN_Stack.pdf');
-        res.download(filePath, 'Swarnendu_Gharami_MEAN_Stack.pdf', err => {
+        if (!fs.existsSync(cvFilePath)) {
+            res.status(404).send('CV file not found.');
+            return;
+        }
+
+        res.download(cvFilePath, cvFileName, err => {
             if (err) {
                 console.error('Download error:', err);
                 if (!res.headersSent) {

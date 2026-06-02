@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const path = require('node:path');
 const test = require('node:test');
 
 process.env.NODE_ENV = 'test';
@@ -7,7 +8,9 @@ const { createApp } = require('../app');
 const Profile = require('../models/profile-model');
 
 const originalFind = Profile.find;
-const app = createApp();
+const app = createApp({
+    cvFilePath: path.join(__dirname, 'fixtures', 'cv.pdf')
+});
 let server;
 let baseUrl;
 
