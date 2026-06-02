@@ -1,4 +1,6 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs/promises');
+const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 
@@ -8,13 +10,32 @@ const { createApp } = require('../app');
 const Profile = require('../models/profile-model');
 
 const originalFind = Profile.find;
-const app = createApp({
-    cvFilePath: path.join(__dirname, 'fixtures', 'cv.pdf')
-});
+let app;
 let server;
 let baseUrl;
+let tempDir;
 
 test.before(async () => {
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'portfolio-backend-test-'));
+    const cvFilePath = path.join(tempDir, 'cv.pdf');
+
+    await fs.writeFile(cvFilePath, `%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] >>
+endobj
+trailer
+<< /Root 1 0 R >>
+%%EOF
+`);
+
+    app = createApp({ cvFilePath });
+
     await new Promise(resolve => {
         server = app.listen(0, () => {
             const { port } = server.address();
@@ -37,6 +58,8 @@ test.after(async () => {
             resolve();
         });
     });
+
+    await fs.rm(tempDir, { recursive: true, force: true });
 });
 
 test.afterEach(() => {
