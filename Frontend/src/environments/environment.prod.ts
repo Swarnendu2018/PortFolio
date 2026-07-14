@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://portfolio-3hde.onrender.com'
+    apiUrl: 'https://swarnenduportfoliobackend123.vercel.app'
 };

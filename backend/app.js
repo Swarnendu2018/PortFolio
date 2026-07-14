@@ -145,13 +145,17 @@ const limiter = rateLimit({
     }
 });
 
-app.use(limiter);
+// app.use(limiter);
 
-mongoose.connect(process.env.MONGO_Cluster_URI).then(()=>{
-    console.log('Mongodb Connected');
-}).catch(err=>{
-    console.log("Getting error to connect mongodb:",err);
-});
+const DBConn = require('./config/db.config');
+
+DBConn();
+
+// mongoose.connect(process.env.MONGO_Cluster_URI).then(()=>{
+//     console.log('Mongodb Connected');
+// }).catch(err=>{
+//     console.log("Getting error to connect mongodb:",err);
+// });
 
 // Serve static files from the 'files' directory
 app.use('/files', express.static(path.join(__dirname, 'files')));
