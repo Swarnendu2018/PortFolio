@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-socail-link',
-  templateUrl: './socail-link.component.html',
-  styleUrls: ['./socail-link.component.css']
+    selector: 'app-socail-link',
+    templateUrl: './socail-link.component.html',
+    styleUrls: ['./socail-link.component.css'],
+    standalone: false
 })
 export class SocailLinkComponent {
   socialLinks = [
